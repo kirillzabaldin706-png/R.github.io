@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Домашняя кухня — еда с любовью. Закажите домашние блюда с доставкой. Борщ, пельмени, блины, десерты и многое другое.">
+  <meta name="keywords" content="домашняя кухня, еда с доставкой, борщ, пельмени, блины, домашняя выпечка">
+  <meta property="og:title" content="Домашняя кухня | Еда с любовью">
+  <meta property="og:description" content="Настоящая домашняя еда с доставкой. Готовим с любовью!">
+  <meta property="og:type" content="website">
+  <title>Домашняя кухня | Еда с любовью</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Merriweather:wght@300;400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❤️</text></svg>">
+  <style>
+    /* Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    :root {
+      --primary-color: #e74c3c;
+      --secondary-color: #f39c12;
+      --dark-color: #2c3e50;
+      --light-color: #ecf0f1;
+      --white: #ffffff;
+      --gray: #95a5a6;
+      --light-gray: #f8f9fa;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --shadow-hover: 0 6px 12px rgba(0, 0, 0, 0.15);
+      --transition: all 0.3s ease;
+    }
+    body {
+      font-family: 'Merriweather', serif;
+      line-height: 1.6;
+      color: var(--dark-color);
+      background-color: var(--light-gray);
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    /* Typography */
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+    h1 {
+      font-size: 3rem;
+    }
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    h3 {
+      font-size: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+    p {
+      margin-bottom: 1rem;
+    }
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      background-color: var(--primary-color);
+      color: var(--white);
+      text-decoration: none;
+      border-radius: 50px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .btn:hover {
+      background-color: #c0392b;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+    }
+    .btn-secondary {
+      background-color: var(--secondary-color);
+      margin-left: 15px;
+    }
+    .btn-secondary:hover {
+      background-color: #e67e22;
+    }
+    .btn-block {
+      width: 100%;
+      text-align: center;
+    }
+    .btn-add {
+      background-color: var(--secondary-color);
+      color: var(--white);
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 0.9rem;
+    }
+    .btn-add:hover {
+      background-color: #e67e22;
+      transform: scale(1.05);
+    }
+    /* Header */
+    .header {
+      background-color: var(--white);
+      box-shadow: var(--shadow);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    .logo-icon {
+      font-size: 2rem;
+      margin-right: 10px;
+    }
+    .logo h1 {
+      font-size: 1.8rem;
+      color: var(--primary-color);
+    }
+    .nav ul {
+      display: flex;
+      list-style: none;
+    }
+    .nav ul li {
+      margin-left: 30px;
+    }
+    .nav ul li a {
+      text-decoration: none;
+      color: var(--dark-color);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+      transition: var(--transition);
+      position: relative;
+    }
+    .nav ul li a:hover,
+    .nav ul li a.active {
+      color: var(--primary-color);
+    }
+    .nav ul li a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--primary-color);
+      transition: var(--transition);
+    }
+    .nav ul li a:hover::after,
+    .nav ul li a.active::after {
+      width: 100%;
+    }
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, rgba(231, 76, 60, 0.9) 0%, rgba(243, 156, 18, 0.85) 100%), url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=1200&h=800&fit=crop');
+      background-size: cover;
+      background-position: center;
+      color: var(--white);
+      padding: 180px 0 100px;
+      text-align: center;
+    }
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .hero h2 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      font-family: 'Dancing Script', cursive;
+    }
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 30px;
+      opacity: 0.95;
+    }
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 30px;
+    }
+    /* About Section */
+    .about {
+      padding: 100px 0;
+      background-color: var(--white);
+    }
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .section-title h2 {
+      color: var(--primary-color);
+      position: relative;
+      display: inline-block;
+      padding-bottom: 15px;
+    }
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background-color: var(--secondary-color);
+      border-radius: 3px;
+    }
+    .section-title p {
+      color: var(--gray);
+      font-size: 1.1rem;
+      margin-top: 10px;
+    }
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+    .about-text p {
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+    }
+    .about-stats {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 40px;
+    }
+    .stat-item {
+      text-align: center;
+    }
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      display: block;
+      margin-bottom: 5px;
+    }
+    .stat-label {
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+    .about-image img {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: var(--shadow-hover);
+    }
+    /* Menu Section */
+    .menu {
+      padding: 100px 0;
+      background-color: var(--light-gray);
+    }
+    .menu-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    .tab-btn {
+      padding: 10px 25px;
+      background-color: var(--white);
+      border: 2px solid var(--primary-color);
+      color: var(--primary-color);
+      border-radius: 50px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .tab-btn:hover {
+      background-color: var(--primary-color);
+      color: var(--white);
+    }
+    .tab-btn.active {
+      background-color: var(--primary-color);
+      color: var(--white);
+    }
+    .menu-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+    }
+    .menu-item {
+      background-color: var(--white);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      display: none;
+    }
+    .menu-item.active {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+    }
+    .menu-item:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+    .menu-item-image {
+      width: 150px;
+      height: 150px;
+      overflow: hidden;
+    }
+    .menu-item-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .menu-item-info {
+      padding: 20px;
+    }
+    .menu-item-desc {
+      color: var(--gray);
+      font-size: 0.95rem;
+      margin-bottom: 15px;
+    }
+    .menu-item-price {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 15px;
+    }
+    .price {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+    /* Recipes Section */
+    .recipes {
+      padding: 100px 0;
+      background-color: var(--white);
+    }
+    .recipes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    .recipe-card {
+      background-color: var(--light-gray);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+    .recipe-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+    .recipe-image {
+      height: 200px;
+      overflow: hidden;
+    }
+    .recipe-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .recipe-content {
+      padding: 25px;
+    }
+    .recipe-time {
+      color: var(--secondary-color);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .recipe-desc {
+      color: var(--gray);
+      margin-bottom: 20px;
+    }
+    .recipe-link {
+      display: inline-block;
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    .recipe-link:hover {
+      color: #c0392b;
+    }
+    /* Testimonials Section */
+    .testimonials {
+      padding: 100px 0;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    }
+    .testimonials-slider {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .testimonial-item {
+      background-color: var(--white);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: var(--shadow);
+      text-align: center;
+      display: none;
+    }
+    .testimonial-item.active {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .testimonial-content p {
+      font-style: italic;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--dark-color);
+      position: relative;
+      padding: 20px;
+    }
+    .testimonial-content p::before,
+    .testimonial-content p::after {
+      content: '"';
+      font-size: 3rem;
+      color: var(--primary-color);
+      opacity: 0.3;
+      position: absolute;
+    }
+    .testimonial-content p::before {
+      top: -20px;
+      left: -10px;
+    }
+    .testimonial-content p::after {
+      bottom: -40px;
+      right: -10px;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 2px solid var(--light-gray);
+    }
+    .author-avatar {
+      width: 60px;
+      height: 60px;
+      background-color: var(--primary-color);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-right: 15px;
+    }
+    .author-info h4 {
+      color: var(--dark-color);
+      margin-bottom: 5px;
+    }
+    .author-info p {
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+    /* Contact Section */
+    .contact {
+      padding: 100px 0;
+      background-color: var(--white);
+    }
+    .contact-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+    }
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+    }
+    .info-icon {
+      font-size: 2rem;
+      min-width: 40px;
+    }
+    .info-item h4 {
+      color: var(--primary-color);
+      margin-bottom: 5px;
+    }
+    .info-item p {
+      color: var(--gray);
+      margin-bottom: 0;
+    }
+    .contact-form {
+      background-color: var(--light-gray);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: var(--shadow);
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: var(--dark-color);
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-family: 'Merriweather', serif;
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+    }
+    /* Footer */
+    .footer {
+      background: linear-gradient(135deg, var(--dark-color) 0%, #1a2530 100%);
+      color: var(--white);
+      padding: 60px 0 20px;
+    }
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .footer-logo h3 {
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .footer-logo p {
+      color: var(--gray);
+      opacity: 0.8;
+    }
+    .footer-links h4,
+    .footer-social h4 {
+      color: var(--white);
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+    }
+    .footer-links ul {
+      list-style: none;
+    }
+    .footer-links ul li {
+      margin-bottom: 10px;
+    }
+    .footer-links ul li a {
+      color: var(--gray);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    .footer-links ul li a:hover {
+      color: var(--primary-color);
+    }
+    .footer-social .social-icons {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .footer-social .social-icons a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--gray);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    .footer-social .social-icons a:hover {
+      color: var(--primary-color);
+    }
+    .footer-social .social-icons span {
+      font-size: 1.5rem;
+    }
+    .footer-bottom {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+    /* Cart Icon */
+    .cart-icon {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--primary-color);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      font-size: 1.5rem;
+    }
+    .cart-badge {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background: var(--secondary-color);
+      color: white;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Poppins', sans-serif;
+    }
+    .cart-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+    .cart-content {
+      background: #fff;
+      width: 90%;
+      max-width: 500px;
+      padding: 2rem;
+      border-radius: 12px;
+      max-height: 80vh;
+      overflow-y: auto;
+      font-family: 'Poppins', sans-serif;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid var(--light-gray);
+    }
+    .cart-header h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.8rem;
+      color: var(--dark-color);
+    }
+    .cart-close {
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--gray);
+    }
+    .cart-item {
+      padding: 0.8rem 0;
+      border-bottom: 1px solid var(--light-gray);
+      font-size: 1rem;
+      color: var(--dark-color);
+    }
+    .cart-item strong {
+      color: var(--primary-color);
+    }
+    .cart-remove {
+      float: right;
+      cursor: pointer;
+      font-weight: bold;
+      color: var(--secondary-color);
+      margin-left: 10px;
+    }
+    .cart-remove:hover {
+      color: #e67e22;
+    }
+    .cart-total {
+      margin-top: 1.5rem;
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: var(--primary-color);
+      text-align: right;
+      padding-top: 1rem;
+      border-top: 2px solid var(--light-gray);
+    }
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .about-content,
+      .contact-content {
+        grid-template-columns: 1fr;
+      }
+      .about-image {
+        order: -1;
+      }
+      .hero h2 {
+        font-size: 2.8rem;
+      }
+    }
+    @media (max-width: 768px) {
+      .nav ul {
+        display: none;
+      }
+      .hero h2 {
+        font-size: 2.3rem;
+      }
+      .hero p {
+        font-size: 1.1rem;
+      }
+      .hero-buttons {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .btn-secondary {
+        margin-left: 0;
+      }
+      .menu-items {
+        grid-template-columns: 1fr;
+      }
+      .menu-item.active {
+        grid-template-columns: 1fr;
+      }
+      .menu-item-image {
+        width: 100%;
+        height: 200px;
+      }
+      .section-title h2 {
+        font-size: 2rem;
+      }
+      .cart-icon {
+        top: 80px;
+      }
+    }
+    @media (max-width: 480px) {
+      .header-content {
+        flex-direction: column;
+        padding: 15px 0;
+      }
+      .logo h1 {
+        font-size: 1.5rem;
+      }
+      .hero {
+        padding: 150px 0 80px;
+      }
+      .hero h2 {
+        font-size: 2rem;
+      }
+      .section-title h2 {
+        font-size: 1.8rem;
+      }
+      .contact-form {
+        padding: 25px;
+      }
+      .cart-icon {
+        top: 70px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Cart Icon -->
+  <div class="cart-icon" onclick="openCart()">
+    🛒
+    <div class="cart-badge" id="cartCount">0</div>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">
+          <span class="logo-icon">❤️</span>
+          <h1>Домашняя кухня</h1>
+        </div>
+        <nav class="nav">
+          <ul>
+            <li><a href="#home" class="active">Главная</a></li>
+            <li><a href="#about">О нас</a></li>
+            <li><a href="#menu">Меню</a></li>
+            <li><a href="#recipes">Рецепты</a></li>
+            <li><a href="#contact">Контакты</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h2>Еда, приготовленная с любовью</h2>
+        <p>Настоящая домашняя кухня, где каждое блюдо готовится с заботой и теплом, как в семье</p>
+        <div class="hero-buttons">
+          <a href="#menu" class="btn btn-primary">Наше меню</a>
+          <a href="#contact" class="btn btn-secondary">Заказать</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about">
+    <div class="container">
+      <div class="section-title">
+        <h2>Наша история</h2>
+        <p>Почему мы готовим с любовью</p>
+      </div>
+      <div class="about-content">
+        <div class="about-text">
+          <p>Все началось с бабушкиной кухни, где аромат свежей выпечки и вкусного борща наполнял дом теплом и уютом. Мы верим, что настоящая еда — это не просто питание, это способ выразить любовь и заботу.</p>
+          <p>Каждое блюдо готовится вручную, с использованием только свежих и качественных ингредиентов. Мы не используем консерванты и искусственные добавки — только натуральные продукты и много любви.</p>
+          <div class="about-stats">
+            <div class="stat-item">
+              <span class="stat-number">5</span>
+              <span class="stat-label">лет опыта</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">1000+</span>
+              <span class="stat-label">счастливых клиентов</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">50+</span>
+              <span class="stat-label">рецептов</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-image">
+          <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=600&h=400&fit=crop" alt="Наша кухня">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Menu Section -->
+  <section id="menu" class="menu">
+    <div class="container">
+      <div class="section-title">
+        <h2>Наше меню</h2>
+        <p>Домашние блюда с любовью</p>
+      </div>
+      <div class="menu-tabs">
+        <button class="tab-btn active" data-tab="breakfast">Завтраки</button>
+        <button class="tab-btn" data-tab="lunch">Обеды</button>
+        <button class="tab-btn" data-tab="dinner">Ужины</button>
+        <button class="tab-btn" data-tab="desserts">Десерты</button>
+      </div>
+      <div class="menu-items">
+        <div class="menu-item active" data-category="breakfast">
+          <div class="menu-item-image">
+            <img src="images/w.jpg" alt="Овсянка">
+          </div>
+          <div class="menu-item-info">
+            <h3>Овсянка с ягодами и медом</h3>
+            <p class="menu-item-desc">Теплая овсянка с свежими ягодами, орехами и натуральным медом</p>
+            <div class="menu-item-price">
+              <span class="price">250 ₽</span>
+              <button class="btn-add" onclick="addToCart('Овсянка с ягодами и медом', 250)">Добавить</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-item active" data-category="breakfast">
+          <div class="menu-item-image">
+            <img src="images/блины.jpg" alt="Блины">
+          </div>
+          <div class="menu-item-info">
+            <h3>Блины с творогом</h3>
+            <p class="menu-item-desc">Пышные блины с нежным творогом и сметаной</p>
+            <div class="menu-item-price">
+              <span class="price">280 ₽</span>
+              <button class="btn-add" onclick="addToCart('Блины с творогом', 280)">Добавить</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-item" data-category="lunch">
+          <div class="menu-item-image">
+            <img src="images/брщ.jpg" alt="Борщ">
+          </div>
+          <div class="menu-item-info">
+            <h3>Борщ по-домашнему</h3>
+            <p class="menu-item-desc">Настоящий борщ с говядиной, сметаной и чесночными пампушками</p>
+            <div class="menu-item-price">
+              <span class="price">320 ₽</span>
+              <button class="btn-add" onclick="addToCart('Борщ по-домашнему', 320)">Добавить</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-item" data-category="dinner">
+          <div class="menu-item-image">
+            <img src="images/пельмени.jpg" alt="Пельмени">
+          </div>
+          <div class="menu-item-info">
+            <h3>Пельмени с говядиной</h3>
+            <p class="menu-item-desc">Домашние пельмени ручной лепки с сочной начинкой</p>
+            <div class="menu-item-price">
+              <span class="price">350 ₽</span>
+              <button class="btn-add" onclick="addToCart('Пельмени с говядиной', 350)">Добавить</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-item" data-category="desserts">
+          <div class="menu-item-image">
+            <img src="images/чизкейк.jpg" alt="Чизкейк">
+          </div>
+          <div class="menu-item-info">
+            <h3>Нью-Йорк чизкейк</h3>
+            <p class="menu-item-desc">Классический чизкейк с ягодным соусом</p>
+            <div class="menu-item-price">
+              <span class="price">290 ₽</span>
+              <button class="btn-add" onclick="addToCart('Нью-Йорк чизкейк', 290)">Добавить</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recipes Section -->
+  <section id="recipes" class="recipes">
+    <div class="container">
+      <div class="section-title">
+        <h2>Популярные рецепты</h2>
+        <p>Приготовьте дома с любовью</p>
+      </div>
+      <div class="recipes-grid">
+        <div class="recipe-card">
+          <div class="recipe-image">
+            <img src="images/брщ.jpg" alt="Борщ">
+          </div>
+          <div class="recipe-content">
+            <h3>Борщ по-домашнему</h3>
+            <p class="recipe-time">Время приготовления: 2 часа</p>
+            <p class="recipe-desc">Настоящий домашний борщ с говядиной и сметаной</p>
+            <a href="#" class="recipe-link">Читать рецепт</a>
+          </div>
+        </div>
+        <div class="recipe-card">
+          <div class="recipe-image">
+            <img src="images/блины.jpg" alt="Блины">
+          </div>
+          <div class="recipe-content">
+            <h3>Блины на молоке</h3>
+            <p class="recipe-time">Время приготовления: 30 минут</p>
+            <p class="recipe-desc">Пышные и ароматные блины как у бабушки</p>
+            <a href="#" class="recipe-link">Читать рецепт</a>
+          </div>
+        </div>
+        <div class="recipe-card">
+          <div class="recipe-image">
+            <img src="images/пирог.jpg" alt="Пирог">
+          </div>
+          <div class="recipe-content">
+            <h3>Яблочный пирог</h3>
+            <p class="recipe-time">Время приготовления: 1 час</p>
+            <p class="recipe-desc">Ароматный пирог с корицей и свежими яблоками</p>
+            <a href="#" class="recipe-link">Читать рецепт</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials">
+    <div class="container">
+      <div class="section-title">
+        <h2>Отзывы наших гостей</h2>
+        <p>Что говорят о нашей еде</p>
+      </div>
+      <div class="testimonials-slider">
+        <div class="testimonial-item active">
+          <div class="testimonial-content">
+            <p>«Заказывала борщ на обед, и это было настоящее чудо! Вкус как у моей бабушки, сразу вспомнила детство. Теперь заказываю регулярно!»</p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">А</div>
+            <div class="author-info">
+              <h4>Анна Петрова</h4>
+              <p>Постоянный клиент</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-item">
+          <div class="testimonial-content">
+            <p>«Пельмени просто невероятные! Такие сочные и вкусные, что невозможно остановиться. Моя семья в восторге, спасибо за ваш труд и любовь к еде!»</p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">М</div>
+            <div class="author-info">
+              <h4>Михаил Соколов</h4>
+              <p>Отец двоих детей</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-item">
+          <div class="testimonial-content">
+            <p>«Заказывала торт на день рождения сына. Не только красивый, но и очень вкусный! Все гости были в восторге. Теперь знаю, куда обращаться за праздничной выпечкой!»</p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">Е</div>
+            <div class="author-info">
+              <h4>Елена Козлова</h4>
+              <p>Мама</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2>Свяжитесь с нами</h2>
+        <p>Закажите домашнюю еду с любовью</p>
+      </div>
+      <div class="contact-content">
+        <div class="contact-info">
+          <div class="info-item">
+            <span class="info-icon">📍</span>
+            <div>
+              <h4>Адрес</h4>
+              <p>г.Абу-даби, ул. Маканская, д. 52</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <span class="info-icon">📱</span>
+            <div>
+              <h4>Телефон</h4>
+              <p>+7 (952) 679-29-46</p>
+              <p>+7 (903) 987-65-43</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <span class="info-icon">⏰</span>
+            <div>
+              <h4>Режим работы</h4>
+              <p>Пн-Пт: 9:00 - 21:00</p>
+              <p>Сб-Вс: 10:00 - 22:00</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <span class="info-icon">✉️</span>
+            <div>
+              <h4>Email</h4>
+              <p>info@domashnyaya-kuhnya.ru</p>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form">
+          <form id="orderForm">
+            <div class="form-group">
+              <label for="name">Ваше имя *</label>
+              <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Телефон *</label>
+              <input type="tel" id="phone" required pattern="[\+]?[78][\s\-]?\(?\d{3}\)?[\s\-]?\d{3}[\s\-]?\d{2}[\s\-]?\d{2}">
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email">
+            </div>
+            <div class="form-group">
+              <label for="message">Что бы вы хотели заказать?</label>
+              <textarea id="message" rows="4"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Отправить заказ</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <span class="logo-icon">❤️</span>
+          <h3>Домашняя кухня</h3>
+          <p>Еда, приготовленная с любовью</p>
+        </div>
+        <div class="footer-links">
+          <h4>Быстрые ссылки</h4>
+          <ul>
+            <li><a href="#home">Главная</a></li>
+            <li><a href="#about">О нас</a></li>
+            <li><a href="#menu">Меню</a></li>
+            <li><a href="#recipes">Рецепты</a></li>
+            <li><a href="#contact">Контакты</a></li>
+          </ul>
+        </div>
+        <div class="footer-social">
+          <h4>Мы в соцсетях</h4>
+          <div class="social-icons">
+            <a href="#"><span>📱</span> Instagram</a>
+            <a href="#"><span>💬</span> Telegram</a>
+            <a href="#"><span>👍</span> VK</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Домашняя кухня. Все права защищены.</p>
+        <p>Сделано с ❤️ для вас</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cart Modal -->
+  <div class="cart-modal" id="cartModal">
+    <div class="cart-content">
+      <div class="cart-header">
+        <h3>Ваш заказ</h3>
+        <span class="cart-close" onclick="closeCart()">&times;</span>
+      </div>
+      <div id="cartItems">
+        <p>Корзина пуста</p>
+      </div>
+      <div class="cart-total" id="cartTotal"></div>
+      <button class="btn btn-primary btn-block" style="margin-top:1rem;" onclick="confirmOrder()">Оформить заказ</button>
+    </div>
+  </div>
+
+  <script>
+    // Cart functionality
+    let cart = [];
+
+    function addToCart(name, price) {
+      cart.push({ name, price });
+      updateCart();
+      
+      // Show feedback
+      const btn = event.target;
+      const originalText = btn.textContent;
+      btn.textContent = 'Добавлено! ❤️';
+      btn.style.backgroundColor = '#27ae60';
+      
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.style.backgroundColor = '';
+      }, 2000);
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCart();
+    }
+
+    function updateCart() {
+      const count = cart.length;
+      document.getElementById('cartCount').textContent = count;
+
+      const itemsEl = document.getElementById('cartItems');
+      const totalEl = document.getElementById('cartTotal');
+
+      if (cart.length === 0) {
+        itemsEl.innerHTML = '<p>Корзина пуста</p>';
+        totalEl.textContent = '';
+        return;
+      }
+
+      let html = '';
+      let total = 0;
+
+      cart.forEach((item, index) => {
+        html += `
+          <div class="cart-item">
+            ${item.name} — <strong>${item.price} ₽</strong>
+            <span class="cart-remove" onclick="removeFromCart(${index})">×</span>
+          </div>`;
+        total += item.price;
+      });
+
+      itemsEl.innerHTML = html;
+      totalEl.textContent = `Итого: ${total} ₽`;
+    }
+
+    function openCart() {
+      document.getElementById('cartModal').style.display = 'flex';
+    }
+
+    function closeCart() {
+      document.getElementById('cartModal').style.display = 'none';
+    }
+
+    function confirmOrder() {
+      if (cart.length === 0) {
+        alert('Корзина пуста!');
+        return;
+      }
+      
+      const total = cart.reduce((sum, item) => sum + item.price, 0);
+      alert(`Ваш заказ на сумму ${total} ₽ принят! Мы свяжемся с вами для подтверждения.`);
+      
+      // Clear cart
+      cart = [];
+      updateCart();
+      closeCart();
+    }
+
+    // Close modal when clicking outside
+    document.getElementById('cartModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeCart();
+      }
+    });
+
+    // Menu Tabs Functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const tabBtns = document.querySelectorAll('.tab-btn');
+      const menuItems = document.querySelectorAll('.menu-item');
+      
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          // Remove active class from all buttons
+          tabBtns.forEach(b => b.classList.remove('active'));
+          
+          // Add active class to clicked button
+          this.classList.add('active');
+          
+          // Get category from data-tab
+          const category = this.getAttribute('data-tab');
+          
+          // Show/hide menu items based on category
+          menuItems.forEach(item => {
+            if (item.getAttribute('data-category') === category) {
+              item.classList.add('active');
+            } else {
+              item.classList.remove('active');
+            }
+          });
+        });
+      });
+
+      // Form Submission
+      const orderForm = document.getElementById('orderForm');
+      if (orderForm) {
+        orderForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          const name = document.getElementById('name').value;
+          const phone = document.getElementById('phone').value;
+          
+          if (name && phone) {
+            alert(`Спасибо за заказ, ${name}! Мы свяжемся с вами по телефону ${phone} в ближайшее время.`);
+            orderForm.reset();
+          } else {
+            alert('Пожалуйста, заполните все обязательные поля.');
+          }
+        });
+      }
+
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          const targetId = this.getAttribute('href');
+          if (targetId === '#' || targetId === '#home') return;
+          
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: 'smooth'
+            });
+            
+            // Close cart if open
+            closeCart();
+          }
+        });
+      });
+
+      // Testimonials slider
+      const testimonials = document.querySelectorAll('.testimonial-item');
+      let currentTestimonial = 0;
+      
+      function showNextTestimonial() {
+        testimonials[currentTestimonial].classList.remove('active');
+        currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+        testimonials[currentTestimonial].classList.add('active');
+      }
+      
+      // Auto rotate testimonials every 5 seconds
+      setInterval(showNextTestimonial, 5000);
+
+      // Header scroll effect
+      const header = document.querySelector('.header');
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 100) {
+          header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.2)';
+          header.style.background = 'rgba(255, 255, 255, 0.98)';
+        } else {
+          header.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+          header.style.background = 'white';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
